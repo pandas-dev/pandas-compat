@@ -1,7 +1,14 @@
 # -*- coding: utf-8 -*-
 
 import pytest
-import pandas_compat as pdc
+
+try:
+    import pandas_compat as pdc
+except ValueError:
+
+    # we will raise on import of pdc
+    # so if we are at this point we simply skip
+    pytest.importorskip("pandas", minversion="0.17.0")
 
 
 @pytest.mark.parametrize("func", [
