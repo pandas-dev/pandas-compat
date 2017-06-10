@@ -3,6 +3,7 @@ sudo: false
 language: python
 
 env:
+  - PYTHON=2.7 PANDAS=0.16.2
   - PYTHON=2.7 PANDAS=0.17.1 LINT='true'
   - PYTHON=2.7 PANDAS=0.19.2
   - PYTHON=3.5 PANDAS=0.18.1
@@ -30,7 +31,7 @@ install:
     else
       conda install pandas=$PANDAS;
     fi
-  - pip install coverage pytest flake8
+  - pip install pytest flake8
   - conda list
   - python setup.py install
 
