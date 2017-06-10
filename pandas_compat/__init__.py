@@ -23,15 +23,15 @@ if not _pd_version_under_020:
 # >= 0.19.0
 elif not _pd_version_under_019:
     from pandas.api.types import *  # noqa
-    from pandas.types.dtypes import DatetimeTZDtype, CategoricalDtype  # noqa
+    from pandas.types.dtypes import *  # noqa
 
 # >= 0.18.0
 elif not _pd_version_under_018:
-    from pandas.core.common import DatetimeTZDtype, CategoricalDtype  # noqa
+    from pandas.core.common import *  # noqa
 
 # >= 0.17.0
 elif not _pd_version_under_017:
-    from pandas.core.common import DatetimeTZDtype, CategoricalDtype  # noqa
+    from pandas.core.common import *  # noqa
 
 else:
     raise ValueError("pandas < 0.17.0 is not supported for pandas-compat")
