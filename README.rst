@@ -5,6 +5,8 @@ pandas-compat
 
 **pandas-compat** is a package providing an API compatibility across versions to downstream libraries that use pandas.
 
+This compatibility layer requires ``pandas`` >= 0.17.0.
+
 
 Installation
 ------------
@@ -34,6 +36,15 @@ Install latest development version
 
 Usage
 -----
+
+In your downstream library, you can use this pattern:
+
+.. code-block:: python
+
+   import pandas_compat as pdc
+
+   pdc.is_datetime64tz_dtype(...)
+   pdc.infer_dtype(...)
 
 
 .. |Build Status| image:: https://travis-ci.org/pandas-dev/pandas-compat.svg?branch=master
