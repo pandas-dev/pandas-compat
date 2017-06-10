@@ -11,6 +11,7 @@ except ValueError:
     pytest.importorskip("pandas", minversion="0.17.0")
 
 
+# 017
 @pytest.mark.parametrize("func", [
     'is_bool', 'is_bool_dtype',
     'is_categorical', 'is_categorical_dtype', 'is_complex',
@@ -24,9 +25,17 @@ except ValueError:
     'is_timedelta64_dtype', 'is_timedelta64_ns_dtype',
     'is_re', 'is_re_compilable',
     'is_iterator',
-    'is_list_like', 'is_hashable'])
+    'is_list_like', 'is_hashable', 'infer_dtype', 'is_scalar'])
 def test_introspection_017(func):
     result = getattr(pdc, func)
+    assert result is not None
+
+
+@pytest.mark.parametrize("dtype", [
+    'CategoricalDtype',
+    'DatetimeTZDtype'])
+def test_dtypes_017(dtype):
+    result = getattr(pdc, dtype)
     assert result is not None
 
 
@@ -45,8 +54,10 @@ def test_introspection_018(func):
 @pytest.mark.skipif(
     pdc._pd_version_under_019, reason='pandas >= 0.19.0 required')
 @pytest.mark.parametrize("func", [
-    'is_scalar', 'is_file_like', 'is_period',
-    'union_categoricals', 'infer_dtype'])
+    'is_period',
+    'union_categoricals',
+    'hash_array',
+    'hash_pandas_object'])
 def test_introspection_019(func):
     result = getattr(pdc, func)
     assert result is not None
@@ -56,25 +67,15 @@ def test_introspection_019(func):
 @pytest.mark.skipif(
     pdc._pd_version_under_020, reason='pandas >= 0.20.0 required')
 @pytest.mark.parametrize("func", [
-    'is_interval', 'is_interval_dtype', 'is_period_dtype',
+    'is_interval', 'is_file_like', 'is_interval_dtype', 'is_period_dtype',
     'is_signed_integer_dtype', 'is_unsigned_integer_dtype'])
 def test_introspection_020(func):
     result = getattr(pdc, func)
     assert result is not None
 
 
-# 017
-@pytest.mark.parametrize("dtype", [
-    'CategoricalDtype',
-    'DatetimeTZDtype'])
-def test_dtypes_017(dtype):
-    result = getattr(pdc, dtype)
-    assert result is not None
-
-
-# 020
 @pytest.mark.skipif(
-    pdc._pd_version_under_019, reason='pandas >= 0.19.0 required')
+    pdc._pd_version_under_020, reason='pandas >= 0.20.0 required')
 @pytest.mark.parametrize("dtype", [
     'IntervalDtype',
     'PeriodDtype'])

@@ -19,22 +19,25 @@ _pd_version_is_019 = _pdv.version[1] == 19 and len(_pdv.version) == 3
 # >= 0.20.0
 if not _pd_version_under_020:
     from pandas.api.types import *  # noqa
+    from pandas.util import hash_pandas_object, hash_array  # noqa
 
 # >= 0.19.0
 elif not _pd_version_under_019:
+    from pandas.lib import infer_dtype, isscalar as is_scalar  # noqa
     from pandas.api.types import *  # noqa
     from pandas.types.dtypes import *  # noqa
+    from pandas.types.concat import union_categoricals  # noqa
+    from pandas.tools.hashing import hash_pandas_object, hash_array  # noqa
 
 # >= 0.18.0
 elif not _pd_version_under_018:
+    from pandas.lib import infer_dtype, isscalar as is_scalar  # noqa
     from pandas.core.common import *  # noqa
 
 # >= 0.17.0
 elif not _pd_version_under_017:
+    from pandas.lib import infer_dtype, isscalar as is_scalar  # noqa
     from pandas.core.common import *  # noqa
-
-else:
-    raise ValueError("pandas < 0.17.0 is not supported for pandas-compat")
 
 
 versions = get_versions()
