@@ -32,10 +32,10 @@ def test_introspection_017(func):
 
 # 018
 @pytest.mark.skipif(
-    pdc._pd_version_under_019, reason='pandas >= 0.18.0 required')
+    pdc._pd_version_under_018, reason='pandas >= 0.18.0 required')
 @pytest.mark.parametrize("func", [
-    'is_extension_type', 'is_scalar', 'is_dict_like', 'is_string_dtype',
-    'pandas_dtype', 'is_named_tuple', 'is_file_like', 'is_period'])
+    'is_extension_type', 'is_dict_like', 'is_string_dtype',
+    'pandas_dtype', 'is_named_tuple'])
 def test_introspection_018(func):
     result = getattr(pdc, func)
     assert result is not None
@@ -45,6 +45,7 @@ def test_introspection_018(func):
 @pytest.mark.skipif(
     pdc._pd_version_under_019, reason='pandas >= 0.19.0 required')
 @pytest.mark.parametrize("func", [
+    'is_scalar', 'is_file_like', 'is_period',
     'union_categoricals', 'infer_dtype'])
 def test_introspection_019(func):
     result = getattr(pdc, func)
@@ -53,7 +54,7 @@ def test_introspection_019(func):
 
 # 020
 @pytest.mark.skipif(
-    pdc._pd_version_under_019, reason='pandas >= 0.20.0 required')
+    pdc._pd_version_under_020, reason='pandas >= 0.20.0 required')
 @pytest.mark.parametrize("func", [
     'is_interval', 'is_interval_dtype', 'is_period_dtype',
     'is_signed_integer_dtype', 'is_unsigned_integer_dtype'])
