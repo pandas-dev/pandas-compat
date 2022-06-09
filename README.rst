@@ -1,6 +1,9 @@
 pandas-compat
 =============
 
+THIS LIBRARY IS NO LONGER IN DEVELOPMENT OR MAINTAINED
+------------------------------------------------------
+
 |Build Status| |Version Status|
 
 **pandas-compat** is a package providing an API compatibility across versions to downstream libraries that use pandas.
